@@ -1,8 +1,20 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  width: 5vh;
+  height: 5vh;
 }
 
-a {
-  color: #00B7FF;
+.popup-content {
+  background-color: antiquewhite;
+  margin: auto;
+  border-radius: 20px;
+  border: 1px solid rgb(47, 135, 191)
+}
+
+.close {
+  background-color: rgb(55, 148, 129);
+  color: antiquewhite;
+  border: 1px solid rgb(47, 135, 191);
 }
