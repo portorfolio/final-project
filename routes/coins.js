@@ -6,13 +6,13 @@ const Coins = require('../models/coins')
 router.get('/', async function (req, res, next) {
   try {
     const coins = await Coins.find()
-    res.json(coins);
+    res.render('index', { coins })
   } catch (err) {
     next(err)
   }
 });
 
-//allow coin iteration
+//allow coin iterations
 router.put('/toss/:coin', async function (req, res) {
   try {
     const coinName = req.params.coin

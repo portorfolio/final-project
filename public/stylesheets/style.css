@@ -1,20 +1,51 @@
-.popup {
+@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
+
+body {
+  font-family: "Coiny", system-ui;
+  font-weight: 400;
+}
+
+#popup {
   display: none;
   position: fixed;
   z-index: 1;
-  width: 5vh;
-  height: 5vh;
+  width: 30%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.popup-content {
+#popup-content {
   background-color: antiquewhite;
   margin: auto;
+  padding: 3% 5%;
   border-radius: 20px;
-  border: 1px solid rgb(47, 135, 191)
+  border: 1px solid rgb(47, 135, 191);
+  font-size: 18px;
+  color: rgb(47, 135, 191)
 }
 
-.close {
+#popup-heading {
+  background-color: rgb(47, 135, 191);
+  color: antiquewhite;
+  text-align: center;
+  border: 1px solid rgb(55, 148, 129);
+}
+
+#close {
+  font-family: "Coiny", system-ui;
+  font-weight: 400;
   background-color: rgb(55, 148, 129);
   color: antiquewhite;
   border: 1px solid rgb(47, 135, 191);
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: fit-content;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
 }
