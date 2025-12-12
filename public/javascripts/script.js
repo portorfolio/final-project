@@ -1,7 +1,4 @@
 // Front end JavaScript code goes here
-
-const { default: tippy } = require("tippy.js");
-
 //initial pop-up when page loads
 const popup = document.getElementById('popup');
 
