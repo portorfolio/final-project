@@ -5,9 +5,7 @@ const coinSchema = new mongoose.Schema({
     dolVal: mongoose.Types.Decimal128,
     count: { type: Number, default: 0 },
     img: String
-}, {
-    timestamps: true,
-    //convert decimal128 to string, so it displays
+}, {//convert decimal128 to string, so it displays
     toJSON: {
         virtuals: true,
         transform: function (doc, ret) {

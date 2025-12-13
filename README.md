@@ -17,12 +17,13 @@
 - List the technologies and tools used in the project:
     - **Languages**: HTML, CSS, JavaScript
     - **Libraries**: (e.g., GSAP for animations)
-    - **Other**: Figma for design, Adobe Illustrator for illustrations, OpenAI for A.I. generated assets, etc.
+    - **Other**: Figma for design, Procreate and Clip Studio Paint for asset illustrations, OpenAI for A.I. generated code, etc.
 
 ## Credits
 
-- List any third-party assets used in the project (e.g., sound effects, images, fonts) and provide proper attribution.
-- Acknowledge any resources, tutorials, or references you used to help complete the project.
+- Coiny font: https://fonts.google.com/specimen/Coiny?categoryFilters=Feeling:%2FExpressive%2FPlayful;Appearance:%2FTheme%2FBlobby
+- Hover Popup: https://atomiks.github.io/tippyjs/v6/html-content/
+- Calender: https://www.daterangepicker.com/#examples
 
 ## Future Enhancements
 

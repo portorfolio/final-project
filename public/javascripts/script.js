@@ -11,23 +11,3 @@ document.addEventListener('DOMContentLoaded', () => {
 closePopup.addEventListener('click', () => {
     popup.style.display = 'none'
 })
-
-tippy('#coin-stats', {
-    allowHTML: true,
-    interactive: true,
-    trigger: 'mouseenter click',
-    onShow: async (coinDetails) => {
-        try {
-            const res = await fetch('/coins/stats')
-            const coinData = await res.json();
-
-            coinDetails.setContent(`
-                Total Coins: ${coinData.totalCoins}<br>
-                Total Value: $${coinData.totalValue}<br>
-                Coin Types: ${coinData.CoinBreakdown}`)
-        } catch (error) {
-            instance.setContent('Could not load')
-        }
-    }
-
-})
