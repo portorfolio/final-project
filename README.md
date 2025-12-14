@@ -23,6 +23,9 @@
 
 - Coiny font: https://fonts.google.com/specimen/Coiny?categoryFilters=Feeling:%2FExpressive%2FPlayful;Appearance:%2FTheme%2FBlobby
 - Drag and Drop: https://www.w3schools.com/html/html5_draganddrop.asp#:~:text=Do%20the%20Drop%20-%20ondrop,dropped%2C%20a%20drop%20event%20occurs.&text=Code%20explained:,element%20into%20the%20drop%20element 
+- Sidebar: https://www.w3schools.com/howto/howto_js_sidenav.asp
+- https://expressjs.com/en/guide/routing.html
+- https://www.geeksforgeeks.org/mongodb/mongodb-cheat-sheet/ 
 
 ## Future Enhancements
 
