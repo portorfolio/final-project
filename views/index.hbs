@@ -1,20 +1,31 @@
+<div id="overlay"></div>
+
 <div id="popup">
     <div id="popup-content">
         <div id="popup-heading">
-            <h3>Instructions:</h3>
+            <h2>Instructions:</h2>
         </div>
         <p>Welcome to the wishing fountain! Click a coin, and drag it to the fountain to drop it. Oh, don't forget to
             make your wish.</p>
-        <p>Psst...hover or click on the fountain to see how many coins have been thrown!</p>
         <button id="close">Start Tossing</button>
     </div>
 </div>
 
-<button id="coin-stats"></button>
+<div id="fountain"></div>
 
-<div id="statsrange">
-    <i class="fa fa-calendar"></i>&nbsp;
-    <span></span> <i class="fa fa-caret-down"></i>
+<button id="openSidebar">Coin Stats</button>
+
+<div id="sidebar">
+    <button id="closeSidebar">X</button>
+    <button id="coin-filter">Filter</button>
+    <p id="stats"></p>
 </div>
 
-<img url>
+
+
+<div id="coinCollection">
+    <img class="coin" id='penny' src="/images/penny.png" draggable="true">
+    <img class="coin" id='nickel' src="/images/nickel.png" draggable="true">
+    <img class="coin" id='dime' src="/images/dime.png" draggable="true">
+    <img class="coin" id='quarter' src="/images/quarter.png" draggable="true">
+</div>

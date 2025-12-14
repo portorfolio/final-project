@@ -7,8 +7,8 @@ router.get('/', async function (req, res, next) {
   try {
     const coins = await Coins.find()
     res.render('index', { coins })
-  } catch (err) {
-    next(err)
+  } catch (error) {
+    console.log(error)
   }
 });
 
@@ -22,7 +22,7 @@ router.put('/toss/:coin', async function (req, res) {
 
     //save it to the database 
     await coin.save();
-    res.json('Coin tossed: ', coin)
+    res.json({ message: 'Coin tossed: ', coin })
 
   } catch (error) {
     console.log(error)

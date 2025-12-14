@@ -1,8 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
 
-body {
+* {
   font-family: "Coiny", system-ui;
   font-weight: 400;
+}
+
+/* popup customization */
+#overlay {
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  display: none;
+  opacity: 0.5;
+  z-index: 0;
 }
 
 #popup {
@@ -33,12 +43,18 @@ body {
   color: antiquewhite;
   text-align: center;
   border: 1px solid rgb(55, 148, 129);
+  border-radius: 10px;
+  font-size: 30px;
+}
+
+#popup-heading h2 {
+  margin: 0;
 }
 
 #close {
   font-family: "Coiny", system-ui;
   font-weight: 400;
-  background-color: rgb(55, 148, 129);
+  background-color: rgb(47, 130, 113);
   color: antiquewhite;
   border: 1px solid rgb(47, 135, 191);
   display: flex;
@@ -50,4 +66,78 @@ body {
   font-size: 16px;
 }
 
-/* customizing coin-stats button (act as hover area) */
+#close:hover {
+  background-color: antiquewhite;
+  color: rgb(47, 130, 113);
+  border: 1px solid rgb(47, 130, 113);
+}
+
+/* sidebar */
+#openSidebar {
+  width: 10vh;
+  height: 8vh;
+  background-color: antiquewhite;
+  color: rgb(47, 130, 113);
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+#openSidebar:hover {
+  background-color: rgb(47, 130, 113);
+  color: antiquewhite;
+}
+
+#closeSidebar {
+  display: none;
+  position: absolute;
+  top: 2%;
+  left: 73%;
+  border: none;
+  color: antiquewhite;
+  background-color: rgb(47, 130, 113);
+  border-radius: 10px;
+  font-size: 20px;
+  width: 10vh;
+  height: 8vh;
+}
+
+#sidebar {
+  position: fixed;
+  width: 0;
+  height: 100vh;
+  background-color: antiquewhite;
+  transform: width 0.5s ease;
+  z-index: 9999;
+}
+
+/* customizing filter button */
+#coin-filter {
+  display: none;
+  position: absolute;
+  width: 10vh;
+  height: 8vh;
+  background-color: rgb(47, 135, 191);
+  border: none;
+  border-radius: 10px;
+  color: antiquewhite;
+  font-size: 20px;
+}
+
+#coin-filter:hover {
+  color: rgb(47, 135, 191)
+}
+
+/* customize coins */
+img {
+  width: 20vh;
+  height: 16vh;
+}
+
+#coinCollection {
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  width: 10vh;
+  height: fit-content;
+}
