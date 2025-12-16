@@ -141,3 +141,19 @@ img {
   width: 10vh;
   height: fit-content;
 }
+
+/* fountain */
+#fountain {
+  position: relative;
+  width: 100%;
+}
+
+#drop-zone {
+  position: absolute;
+  width: 50vh;
+  height: 50vh;
+  border: 1px solid black;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

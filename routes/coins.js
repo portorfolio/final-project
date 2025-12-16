@@ -2,31 +2,39 @@ var express = require('express');
 var router = express.Router();
 const Coins = require('../models/coins')
 
-//get data from model and turn it into json
-router.get('/', async function (req, res, next) {
-  try {
-    const coins = await Coins.find()
-    res.render('index', { coins })
-  } catch (error) {
-    console.log(error)
-  }
-});
-
 //allow coin iterations everytime one is tossed
 router.put('/toss/:coin', async function (req, res) {
   try {
-    const coinName = req.params.coin
+    let coinName = req.params.coin
+    coinName = coinName.charAt(0).toUpperCase() + coinName.slice(1)
 
     const coin = await Coins.findOne({ coin: coinName })
+
+    if (!coin) {
+      return res.status(404).json({ error: `Coin ${coinName} not found` })
+    }
+    //coin iteration
     coin.count += 1
 
     //save it to the database 
     await coin.save();
-    res.json({ message: 'Coin tossed: ', coin })
+
+    const allCoins = await Coins.find()
+    let totalValue = 0
+    let totalCoins = 0
+    const CoinBreakdown = {}
+
+    allCoins.forEach(c => {
+      totalValue += c.dolVal * c.count
+      totalCoins += c.count
+      CoinBreakdown[c.coin] = { count: c.count, dolVal: c.dolVal }
+    })
+
+    res.json({ totalValue: totalValue.toFixed(2), totalCoins, CoinBreakdown })
 
   } catch (error) {
     console.log(error)
-    res.send('Something went wrong')
+    res.status(500).json({ error })
   }
 })
 
@@ -72,7 +80,7 @@ router.get('/stats', async function (req, res) {
     })
   } catch (error) {
     console.log(error)
-    res.send('Unable to calculate stats')
+    res.status(500).json({ error })
   }
 })
 

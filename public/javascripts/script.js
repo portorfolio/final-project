@@ -14,7 +14,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //drag and drop coins to fountain event
     const fountain = document.getElementById('fountain')
+    const dropZone = document.getElementById('drop-zone')
     const coins = document.querySelectorAll('.coin')
+
+    //tap to toss coins for mobile devices
+    const isTouchDevice =
+        'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    if (isTouchDevice) {
+        coins.forEach(coin => {
+            coin.addEventListener('click', async () => {
+                const coinId = coin.id;
+
+                await tossCoin(coinId);
+
+                if (sidebarOpen) {
+                    const stats = await getStats();
+                    updateStats(stats);
+                }
+            });
+        });
+    }
+
+    //disables drag n drop
+    if (isTouchDevice) {
+        coins.forEach(coin => {
+            coin.setAttribute('draggable', 'false');
+        });
+    }
 
     //attaches dragstart to each coin in the coin collection
     coins.forEach(coin => {
@@ -23,16 +50,28 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 
-    fountain.addEventListener('dragover', (event) => {
+    dropZone.addEventListener('dragover', (event) => {
         event.preventDefault()
     })
 
-    fountain.addEventListener('drop', (event) => {
+    dropZone.addEventListener('drop', (event) => {
         event.preventDefault()
         const coinId = event.dataTransfer.getData("text/plain")
         console.log('Dropped coin:', coinId)
 
         tossCoin(coinId)
+    })
+
+    dropZone.addEventListener('dragenter', () => {
+        dropZone.classList.add('active')
+    })
+
+    dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('active')
+    })
+
+    dropZone.addEventListener('drop', () => {
+        dropZone.classList.remove('active')
     })
 
     //fetch backend route to connect with frontend to allow coin count iteration
@@ -41,12 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const res = await fetch(`/coins/toss/${coinId}`, {
                 method: 'PUT'
             })
+            const updatedStats = await res.json()
 
             //run functions only if sidebar is open
             if (sidebarOpen) {
-                const stats = await getStats()
-                updateStats(stats)
-                console.log(stats)
+                updateStats(updatedStats)
+                console.log(updatedStats)
             }
 
         } catch (error) {
@@ -71,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //to update stats when a coin is thrown
     function updateStats(stats) {
+        console.log(stats)
         //get stats details container and clears it on default
         const statsContainer = document.getElementById('stats-content')
         statsContainer.innerHTML = ''
