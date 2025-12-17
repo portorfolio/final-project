@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const coinData = stats.CoinBreakdown[coin];
 
             const coinEl = document.createElement('p');
-            coinEl.textContent = `${coin}: ${coinData.count} coins ($${coinData.dolVal})`;
+            coinEl.textContent = `${coin}: ${coinData.count}`;
 
             statsContainer.appendChild(coinEl);
         }

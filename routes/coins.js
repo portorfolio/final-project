@@ -23,9 +23,11 @@ router.put('/toss/:coin', async function (req, res) {
     let totalValue = 0
     let totalCoins = 0
     const CoinBreakdown = {}
-    const val = parseFloat(c.dolVal.toString())
+
 
     allCoins.forEach(c => {
+      const val = parseFloat(c.dolVal.toString())
+
       totalValue += c.dolVal * c.count
       totalCoins += c.count
       CoinBreakdown[c.coin] = {
@@ -51,7 +53,7 @@ router.get('/stats', async function (req, res) {
     const selectedCoin = req.query.coin
 
     if (selectedCoin) {
-      coins = coins.filter(c => c.coin === selectedCoin.charAt(0).toUpperCase + selectedCoin.slice(1))
+      coins = coins.filter(c => c.coin === selectedCoin.charAt(0).toUpperCase() + selectedCoin.slice(1))
     }
 
     //initialize variables

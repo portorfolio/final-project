@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
 
+body {
+  background-color: rgb(71, 132, 71);
+}
+
 * {
   font-family: "Coiny", system-ui;
   font-weight: 400;
@@ -149,11 +153,12 @@ img {
 }
 
 #drop-zone {
+  background-color: gray;
   position: absolute;
-  width: 50vh;
-  height: 50vh;
-  border: 1px solid black;
-  top: 55%;
+  width: 60vh;
+  height: 60vh;
+  border: none;
+  border-radius: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%)translateY(20vh);
 }
