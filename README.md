@@ -2,21 +2,26 @@
 
 ## Live Demo
 
-- Include a link to the live version of the project hosted on Render.
+- https://the-wishing-fountain.onrender.com
 
 ## Project Overview
 
-- This is a public archive project, 
+- This is a public archive project: 
+    A wishing fountain, where it stores the total amount of coins tossed and total value of all coins.
+    Users drag and drop (on desktop), tap and toss (on mobile)
+    Filter buttons to control what type of data to display
 
 ## Endpoints
 
-- List all the endpoints of the API in this project with a brief description of what each endpoint does.
+- PUT '/toss/:coin': Updates the count of a specific coin when tosses 
+    - Request parameters: coin type (penny, nickel, dime, quarter)
+- GET '/stats': Retrieves current coin statistics (total value, total count, breakdown by coin type)
 
 ## Technologies Used
 
 - List the technologies and tools used in the project:
     - **Languages**: HTML, CSS, JavaScript
-    - **Libraries**: (e.g., GSAP for animations)
+    - **Libraries**: N/A
     - **Other**: Figma for design, Procreate and Clip Studio Paint for asset illustrations, OpenAI for A.I. generated code, etc.
 
 ## Credits
@@ -28,11 +33,15 @@
 - Routing: https://expressjs.com/en/guide/routing.html
 - https://www.geeksforgeeks.org/mongodb/mongodb-cheat-sheet/ 
 - Tap to toss for mobile: https://developer.mozilla.org/en-US/docs/Web/API/Element/touchstart_event
-- https://mongoosejs.com/docs/api/model.html#model_Model.findOne 
+- https://mongoosejs.com/docs/api/model.html#model_Model.findOne, https://developer.mozilla.org/en-US/docs/Web/API/Navigator/maxTouchPoints, https://developer.mozilla.org/en-US/docs/Web/API/Navigator
 - Filters: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter 
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt
-- Sound: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/currentTime
+- CurrentTime: https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/currentTime
+- Water Drop Sound: https://freesound.org/people/deleted_user_2104797/sounds/166318/ 
+
 
 ## Future Enhancements
 
-- List any features you would’ve liked to add if given more time
+- More animations
+- Tailored to my aesthetic taste
+

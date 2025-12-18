@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const coinSound = new Audio('/sounds/waterdrop.wav')
     coinSound.volume = 1
 
+    const title = document.getElementById('page-title')
+
     //initial pop-up when page loads
     const overlay = document.getElementById('overlay')
     const popup = document.getElementById('popup');
