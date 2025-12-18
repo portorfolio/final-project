@@ -211,7 +211,7 @@ body {
 
 /* customize coins */
 img.coin {
-  width: clamp(70px, 10vw, 170px);
+  width: clamp(80px, 10vw, 170px);
   cursor: pointer;
   transition: transform 0.15s ease, filter 0.15s ease;
 }
@@ -227,6 +227,8 @@ img.coin:hover {
   right: 10%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
   width: fit-content;
   height: fit-content;
 }
