@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     //import sound 
     const coinSound = new Audio('/sounds/waterdrop.wav')
-    coinSound.volume = 0.5
+    coinSound.volume = 1
 
     //initial pop-up when page loads
     const overlay = document.getElementById('overlay')
