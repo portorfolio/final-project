@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+    //import sound 
+    const coinSound = new Audio('/sounds/waterdrop.wav')
+    coinSound.volume = 0.5
+
     //initial pop-up when page loads
     const overlay = document.getElementById('overlay')
     const popup = document.getElementById('popup');
@@ -6,14 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     overlay.style.display = 'block'
     popup.style.display = 'flex'
+    document.body.classList.add('popup-open')
 
     closePopup.addEventListener('click', () => {
         popup.style.display = 'none'
         overlay.style.display = 'none'
+        document.body.classList.remove('popup-open')
     })
 
     //drag and drop coins to fountain event
-    const fountain = document.getElementById('fountain')
     const dropZone = document.getElementById('drop-zone')
     const coins = document.querySelectorAll('.coin')
 
@@ -28,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 await tossCoin(coinId);
 
-                if (sidebarOpen) {
+                if (sidebar.classList.contains('open')) {
                     const stats = await getStats();
                     updateStats(stats);
                 }
@@ -77,13 +82,17 @@ document.addEventListener('DOMContentLoaded', () => {
     //fetch backend route to connect with frontend to allow coin count iteration
     async function tossCoin(coinId) {
         try {
+            //sets it to play at 0 sec
+            coinSound.currentTime = 0
+            coinSound.play()
+
             const res = await fetch(`/coins/toss/${coinId}`, {
                 method: 'PUT'
             })
             const updatedStats = await res.json()
 
             //run functions only if sidebar is open
-            if (sidebarOpen) {
+            if (sidebar.classList.contains('open')) {
                 updateStats(updatedStats)
                 console.log(updatedStats)
             }
@@ -139,12 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //sidebar and its elements
     const sidebar = document.getElementById('sidebar')
-    let sidebarOpen = false
     let selectedCoin = null
     const filterBtns = document.querySelectorAll('.coin-filter')
-    filterBtns.forEach(btn => {
-        btn.style.display = 'none'
-    })
     const openBtn = document.getElementById('openSidebar')
     const closeBtn = document.getElementById('closeSidebar')
 
@@ -158,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 selectedCoin = coin
             }
 
-            if (sidebarOpen) {
+            if (sidebar.classList.contains('open')) {
                 const stats = await getStats()
                 updateStats(stats)
             }
@@ -166,23 +171,16 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     function openSidebar() {
-        sidebar.style.width = "25%";
-        sidebarOpen = true
-
+        sidebar.classList.add('open')
         getStats().then(stats => updateStats(stats))
-        filterBtns.forEach(btn => btn.style.display = 'block')
         openBtn.style.display = 'none'
-        closeBtn.style.display = 'block'
     }
 
     openBtn.addEventListener('click', openSidebar)
 
     function closeSidebar() {
-        sidebar.style.width = "0%";
-        sidebarOpen = false
-        filterBtns.forEach(btn => btn.style.display = 'none')
+        sidebar.classList.remove('open')
         openBtn.style.display = 'block'
-        closeBtn.style.display = 'none'
     }
 
     closeBtn.addEventListener('click', closeSidebar)

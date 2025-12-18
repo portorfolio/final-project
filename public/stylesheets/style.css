@@ -1,5 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
 
+body.popup-open .coin,
+body.popup-open #openSidebar {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+#page-title {
+  position: relative;
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: antiquewhite;
+  margin-top: 1rem;
+  z-index: 9999;
+}
+
 body {
   background-color: rgb(71, 132, 71);
 }
@@ -78,71 +93,141 @@ body {
 
 /* sidebar */
 #openSidebar {
-  width: 10vh;
-  height: 8vh;
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: fit-content;
+  height: fit-content;
   background-color: antiquewhite;
   color: rgb(47, 130, 113);
-  border: none;
+  border: 1px solid antiquewhite;
   border-radius: 10px;
-  font-size: 20px;
+  font-size: clamp(1rem, 2vw, 2rem);
+  z-index: 10000;
 }
 
 #openSidebar:hover {
   background-color: rgb(47, 130, 113);
   color: antiquewhite;
+  border: 1px solid antiquewhite;
 }
 
 #closeSidebar {
   display: none;
   position: absolute;
   top: 2%;
-  left: 73%;
+  right: 3%;
+  background: transparent;
   border: none;
-  color: antiquewhite;
-  background-color: rgb(47, 130, 113);
-  border-radius: 10px;
-  font-size: 20px;
-  width: 10vh;
-  height: 8vh;
+  box-shadow: none;
+  font-size: 30px;
+  color: rgb(47, 130, 113);
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+#closeSidebar:hover {
+  background: transparent;
+  opacity: 0.7;
 }
 
 #sidebar {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 0;
   height: 100vh;
   background-color: antiquewhite;
-  transform: width 0.5s ease;
-  z-index: 9999;
+  transition: width 0.5s ease;
+  z-index: 10000;
+}
+
+#sidebar.open {
+  width: 25%;
+}
+
+#stats-content {
+  display: none;
+}
+
+#sidebar.open #stats-content {
+  display: flex;
+}
+
+#sidebar>* {
+  display: none;
+}
+
+#sidebar.open>* {
+  display: block;
+}
+
+#stats-content {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10%;
+  background-color: aliceblue;
+  color: rgb(47, 135, 191);
+  width: 80%;
+  margin: 0 auto;
+  flex-direction: column;
+  font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
 /* customizing filter button */
-#coin-filter {
+#filter-container {
   display: none;
-  position: absolute;
-  width: 10vh;
-  height: 8vh;
+  gap: 1vh;
+  flex-wrap: wrap;
+  padding: 5%;
+  justify-content: center;
+}
+
+#sidebar.open #filter-container {
+  display: flex;
+}
+
+.coin-filter {
+  display: block;
+  width: fit-content;
+  height: fit-content;
   background-color: rgb(47, 135, 191);
   border: none;
   border-radius: 10px;
   color: antiquewhite;
-  font-size: 20px;
+  font-size: clamp(14px, 2vw, 18px);
+  border: 1px solid rgb(47, 135, 191)
 }
 
-#coin-filter:hover {
-  color: rgb(47, 135, 191)
+.coin-filter:hover {
+  color: rgb(47, 135, 191);
+  background-color: antiquewhite;
+  border: 1px solid rgb(47, 135, 191);
 }
 
 /* customize coins */
-img {
-  width: 20vh;
-  height: 16vh;
+img.coin {
+  width: clamp(70px, 10vw, 170px);
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+img.coin:hover {
+  transform: scale(1.1) translateY(-4px);
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.3));
 }
 
 #coinCollection {
   position: absolute;
-  bottom: 20%;
+  bottom: 20vh;
   right: 10%;
-  width: 10vh;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
   height: fit-content;
 }
 
@@ -154,11 +239,70 @@ img {
 
 #drop-zone {
   background-color: gray;
-  position: absolute;
-  width: 60vh;
-  height: 60vh;
+  position: fixed;
+  margin: 0 auto;
+  width: clamp(200px, 60vw, 700px);
+  aspect-ratio: 1/1;
   border: none;
   border-radius: 50%;
   left: 50%;
-  transform: translateX(-50%)translateY(20vh);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.water {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%,
+      #8fd3f4,
+      #4facfe);
+}
+
+/* mobile layouts */
+@media (max-width: 768px) {
+
+  #popup {
+    width: 90%;
+  }
+
+  #popup-content {
+    font-size: 16px;
+    padding: 5%
+  }
+
+  #popup-heading {
+    font-size: 22px;
+  }
+
+  #sidebar {
+    width: 0;
+  }
+
+  #sidebar.open {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  #coinCollection {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  #fountain-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  img.coin:active {
+    transform: scale(0.95);
+    filter: brightness(0.9);
+  }
+
 }

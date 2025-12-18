@@ -1,5 +1,7 @@
 <div id="overlay"></div>
 
+<h1 id="page-title">The Wishing Fountain</h1>
+
 <div id="popup">
     <div id="popup-content">
         <div id="popup-heading">
@@ -11,26 +13,31 @@
     </div>
 </div>
 
-<div id="fountain">
-    <div id="drop-zone"></div>
+<div id="fountain-wrapper">
+    <div id="fountain">
+        <div id="drop-zone">
+            <div class="water"></div>
+        </div>
+    </div>
+
+    <div id="coinCollection">
+        <img class="coin" id='penny' src="/images/penny.png" draggable="true">
+        <img class="coin" id='nickel' src="/images/nickel.png" draggable="true">
+        <img class="coin" id='dime' src="/images/dime.png" draggable="true">
+        <img class="coin" id='quarter' src="/images/quarter.png" draggable="true">
+    </div>
 </div>
+
 
 <button id="openSidebar">Coin Stats</button>
 
 <div id="sidebar">
     <button id="closeSidebar">X</button>
-    <button class="coin-filter" data-coin="penny">Pennies</button>
-    <button class="coin-filter" data-coin="nickel">Nickels</button>
-    <button class="coin-filter" data-coin="dime">Dimes</button>
-    <button class="coin-filter" data-coin="quarter">Quarters</button>
+    <div id="filter-container">
+        <button class="coin-filter" data-coin="penny">Pennies</button>
+        <button class="coin-filter" data-coin="nickel">Nickels</button>
+        <button class="coin-filter" data-coin="dime">Dimes</button>
+        <button class="coin-filter" data-coin="quarter">Quarters</button>
+    </div>
     <div id="stats-content"></div>
-</div>
-
-
-
-<div id="coinCollection">
-    <img class="coin" id='penny' src="/images/penny.png" draggable="true">
-    <img class="coin" id='nickel' src="/images/nickel.png" draggable="true">
-    <img class="coin" id='dime' src="/images/dime.png" draggable="true">
-    <img class="coin" id='quarter' src="/images/quarter.png" draggable="true">
 </div>
