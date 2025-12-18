@@ -42,6 +42,8 @@
 
 ## Future Enhancements
 
-- More animations
-- Tailored to my aesthetic taste
-
+- More animations (page loading, coin dropped, etc)
+- Tailored to my aesthetic taste, make it pop out more and not be so flat
+- Implement more features, such as filtering by date, and adding an option to enable instructions again
+- Improved mobile layout
+- More sounds, potentially background music
