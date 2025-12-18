@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
 
 body.popup-open .coin,
-body.popup-open #openSidebar,
-body.popup-open #page-title {
+body.popup-open #openSidebar {
   pointer-events: none;
   opacity: 0.6;
 }
@@ -14,6 +13,10 @@ body.popup-open #page-title {
   color: antiquewhite;
   margin-top: 1rem;
   z-index: 9999;
+}
+
+body.popup-open #page-title {
+  opacity: 0.6;
 }
 
 body {
