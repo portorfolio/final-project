@@ -3,8 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const coinSound = new Audio('/sounds/waterdrop.wav')
     coinSound.volume = 1
 
-    const title = document.getElementById('page-title')
-
     //initial pop-up when page loads
     const overlay = document.getElementById('overlay')
     const popup = document.getElementById('popup');
@@ -88,9 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
             coinSound.currentTime = 0
             coinSound.play()
 
+            //fetches data from the PUT router
             const res = await fetch(`/coins/toss/${coinId}`, {
                 method: 'PUT'
             })
+
+            //jsons the data and puts it in updated stats
             const updatedStats = await res.json()
 
             //run functions only if sidebar is open
